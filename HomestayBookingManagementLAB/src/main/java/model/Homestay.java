@@ -32,6 +32,26 @@ public class Homestay implements Acceptable{
     public boolean isValid(){ 
         return !homeID.isEmpty(); 
     }
+
+    public void setHomeID(String homeID) {
+        this.homeID = homeID;
+    }
+
+    public void setHomeName(String homeName) {
+        this.homeName = homeName;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setRoomNumber(int roomNumber) {
+        this.roomNumber = roomNumber;
+    }
+
+    public void setMaxCapacity(int maxCapacity) {
+        this.maxCapacity = maxCapacity;
+    }
     
     public void showInfo() {
         String cleanName = this.homeName;
@@ -48,4 +68,14 @@ public class Homestay implements Acceptable{
         System.out.printf("| %-8s | %-25s | %-6d | %-9d | %-60s |\n",
                 homeID, cleanName, roomNumber, maxCapacity, cleanAddr);
     }
+
+    public int setMaxCapacity() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public int setRoomNumber() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    
 }

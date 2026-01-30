@@ -252,9 +252,9 @@ public class TourManager {
     
     public void statistics() {
         System.out.println("\n--- STATISTICS: TOURISTS PER HOMESTAY ---");
-        System.out.println("-------------------------------------------------------");
+        System.out.println("------------------------------------------------------------");
         System.out.printf("| %-10s | %-25s | %-15s |\n", "HomeID", "Homestay Name", "Total Tourists");
-        System.out.println("-------------------------------------------------------");
+        System.out.println("------------------------------------------------------------");
 
         List<Homestay> homestays = hMgr.getList(); 
         
@@ -271,6 +271,6 @@ public class TourManager {
                     (h.getHomeName().length() > 25 ? h.getHomeName().substring(0,22)+"..." : h.getHomeName()), 
                     total);
         }
-        System.out.println("-------------------------------------------------------");
+        System.out.println("------------------------------------------------------------");
     }
 }

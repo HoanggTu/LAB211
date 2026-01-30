@@ -4,8 +4,10 @@
  */
 package controller;
 import data.HomestayDAO;
+import java.util.Date;
 import model.Homestay;
 import java.util.List;
+import model.Tour;
 import utils.Inputter;
 /**
  *
@@ -23,6 +25,10 @@ public class HomestayManager {
     public List<Homestay> getList() {
         return list;
     }
+    private boolean isExist(String id) {
+        for (Homestay h : list) if (h.getHomeID().equalsIgnoreCase(id)) return true;
+        return false;
+    }
     
     public Homestay searchHomestay(String id) {
         for (Homestay h : list) {
@@ -32,19 +38,55 @@ public class HomestayManager {
     }
     public void  searchByCity(){
         System.out.println("--SearchByCity--");
+        
         String city = Inputter.inputString("Enter city: ", false).toLowerCase();
+        
+        System.out.println("--- SEARCH RESULT ---");
         boolean found = false;
+        
+        System.out.println("----------------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("| %-8s | %-25s | %-6s | %-9s | %-60s |\n", 
+                "ID", "Name", "Num", "Capacity", "Address");
+        System.out.println("----------------------------------------------------------------------------------------------------------------------------");
         for(Homestay h : list){
             if(h.getAddress().toLowerCase().contains(city)){
                 h.showInfo();
                 found= true;
             }
         }
+        System.out.println("----------------------------------------------------------------------------------------------------------------------------");
+
         if(!found){
             System.out.println("No Found");
         }
     }
     
+    public void addHomeStay() {
+        System.out.println("\n--- ADD NEW HOMESTAY ---");
+        String id;
+        while(true) {
+            id = Inputter.inputString("Enter Homestay ID: ", false);
+            if(!isExist(id)) break;
+            System.err.println("Existed!");
+        }
+        String name = Inputter.inputString("Enter Name: ", false);
+        
+        
+       
+       
+        int num = Inputter.inputInt("Enter number Room: ", 1, 100); 
+        int cap = Inputter.inputInt("Enter Capacity: ", 1, 500);
+        
+
+        String add = Inputter.inputString("Enter Address: ", false);
+        double price =Inputter.inputDouble ("Enter Price: ", 0);
+
+
+        Homestay h = new Homestay(id, name, num, add,cap, price );
+        list.add(h);
+        dao.writeData(list);
+        System.out.println("Success!");
+    }
 
     public void displayAll() {
         System.out.println("\n--- HOMESTAY LIST ---");

@@ -26,7 +26,9 @@ public class Main {
             System.out.println("6. Delete Booking");
             System.out.println("7. Search Booking by Name");
             System.out.println("8. Statistics (Tourists per Homestay)");
-            System.out.println("9. Exit");
+            System.out.println("9. Create new HomeStay");
+
+            System.out.println("10. Exit");
             
             int choice = utils.Inputter.inputInt("Your choice: ", 1, 10);
 
@@ -39,7 +41,8 @@ public class Main {
                 case 6: tMgr.deleteTour(); break;
                 case 7: tMgr.searchBookingByname(); break;
                 case 8: tMgr.statistics(); break;
-                case 9: 
+                case 9: hMgr.addHomeStay(); break;
+                case 10: 
                     System.out.println("Data saved. Goodbye!");
                     System.exit(0);
             }
